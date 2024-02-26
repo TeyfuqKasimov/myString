@@ -2,13 +2,12 @@
 
 #include <string>
 #include <iostream>
-#ifndef C__USERS_TOFIK_DESKTOP_P_MYSTRING_H_
-#define C__USERS_TOFIK_DESKTOP_P_MYSTRING_H_
-#endif  // C__USERS_TOFIK_DESKTOP_P_MYSTRING_H_
+#ifndef INCLUDE_MYSTRING_H_
+#define INCLUDE_MYSTRING_H_
+#endif  // INCLUDE_MYSTRING_H_
 
 class myString {
  public:
-
   explicit myString(const char* = nullptr);
 
   explicit myString(const std::string);
@@ -21,7 +20,6 @@ class myString {
 
   char* get();
 
-  // overload operator<< std::cout
   friend std::ostream& operator<<(std::ostream& os, const myString&);
 
   friend std::istream& operator>>(std::istream& is, myString&);
@@ -30,11 +28,9 @@ class myString {
 
   myString& operator=(myString&&);
 
-  // myString& myString::operator=(const myString&&);
-
   myString operator+(const myString&) const;
 
-  myString operator-(const myString&) const; // Don't work 
+  myString operator-(const myString&) const;
 
   myString operator*(const size_t&) const;
 
@@ -57,10 +53,10 @@ class myString {
   size_t operator() (const myString&);
 
   ~myString();
+
+ private:
   char* str;
   size_t size = 0;
 
   void recalloc(const size_t&);
- private:
-
 };
